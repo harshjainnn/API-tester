@@ -1,0 +1,30 @@
+
+export async function register() {
+    if (process.env.NEXT_RUNTIME === 'nodejs') {
+        const config = (await import('../mikro-orm.config')).default;
+        const { MikroORM } = await import('@mikro-orm/core');
+
+        // We need to ensure this runs only once or handles concurrency, but for a local app it's fine.
+        // Also, we can't easily rely on global state here in edge runtime, but strict nodejs runtime should work.
+        // However, running migrations in instrumentation might slow down startup.
+        // The user requirement says "Must auto create DB on first run."
+        // A better approach might be to check if DB exists in accessing the ORM or just let the user run a command.
+        // But "User runs: npm run dev ... then opens browser" implies no manual migration step.
+
+        // Let's try to run migration here.
+        try {
+            const orm = await MikroORM.init(config);
+            const migrator = orm.getMigrator();
+            await migrator.up();
+            await orm.close();
+            console.log('Database migrations executed successfully');
+        } catch (error) {
+            console.error('Failed to run migrations', error);
+            // It might fail if migration doesn't exist yet. We might need to create it?
+            // Creating migration requires CLI and diffing. We can't do that easily in runtime.
+            // We should ensure the INITIAL migration file is present in the codebase.
+            // I will generate the initial migration file manually or using CLI once logic is done.
+            // If I generate it now, I can include it in the source.
+        }
+    }
+}

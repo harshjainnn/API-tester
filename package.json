@@ -1,0 +1,44 @@
+{
+  "name": "api-tester",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:init": "tsx scripts/db-init.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "@mikro-orm/core": "^6.0.0",
+    "@mikro-orm/libsql": "^6.6.6",
+    "@mikro-orm/migrations": "^6.0.0",
+    "@mikro-orm/reflection": "^6.0.0",
+    "@mikro-orm/sqlite": "^6.0.0",
+    "axios": "^1.6.0",
+    "better-sqlite3": "^10.1.0",
+    "clsx": "^2.0.0",
+    "knex": "^3.1.0",
+    "lucide-react": "^0.290.0",
+    "next": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "reflect-metadata": "^0.2.2",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.6.6",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "latest",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "latest"
+  }
+}
