@@ -70,3 +70,7 @@ If you encounter `MODULE_NOT_FOUND` or native binding errors with SQLite on Wind
 2.  Create a `.env.local` file in the project root.
 3.  Add `DATABASE_URL=postgres://...` (your connection string).
 4.  Run `npm run dev`. The app will automatically switch to PostgreSQL driver which is more stable in this environment.
+
+## Implementation 
+<img width="1918" height="887" alt="image" src="https://github.com/user-attachments/assets/9737364c-eea4-41fb-9bc4-e56a55292c89" />
+
